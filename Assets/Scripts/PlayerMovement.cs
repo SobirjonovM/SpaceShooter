@@ -1,47 +1,62 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-   public float maxSpeed = 5f;
-   public float rotSpeed = 180f;
 
-   float shipBoudaryRadius = 0.5f;
-    void Start (){
+	public float maxSpeed = 5f;
+	public float rotSpeed = 180f;
 
-    }
+	float shipBoundaryRadius = 0.5f;
 
-    void Update () {
-        Quaternion rot = transform.rotation;
-        float z = rot.eulerAngles.z;
+	void Start () {
+	
+	}
+	
+	void Update () {
 
-        z -= Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+		Quaternion rot = transform.rotation;
 
-        rot = Quaternion.Euler(0, 0, z);
+		float z = rot.eulerAngles.z;
 
-        transform.rotation = rot;
+		z -= Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
 
-        Vector3 pos = transform.position;
+		rot = Quaternion.Euler( 0, 0, z );
 
-        Vector3 velocity = new Vector3(0, Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime);
+		// Feed the quaternion into our rotation
+		transform.rotation = rot;
 
-       pos += rot * velocity;
-       
-        if(pos.y+shipBoudaryRadius > Camera.main.orthographicSize) {
-            pos.y = Camera.main.orthographicSize - shipBoudaryRadius;
-        }
-        if(pos.y-shipBoudaryRadius < -Camera.main.orthographicSize) {
-            pos.y = -Camera.main.orthographicSize + shipBoudaryRadius;
-        }
-        float screenRatio = (float)Screen.width / (float)Screen.height;
-        float widthOrtho = Camera.main.orthographicSize * screenRatio;
+		// MOVE the ship.
+		Vector3 pos = transform.position;
+		 
+		Vector3 velocity = new Vector3(0, Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime, 0);
 
-        if(pos.x+shipBoudaryRadius > widthOrtho) {
-            pos.x = widthOrtho - shipBoudaryRadius;
-        }
-        if(pos.x-shipBoudaryRadius < -widthOrtho) {
-            pos.x = -widthOrtho + shipBoudaryRadius;
-        }
+		pos += rot * velocity;
 
-        transform.position = pos;
-    }
+		// RESTRICT the player to the camera's boundaries!
+
+		// First to vertical, because it's simpler
+		if(pos.y+shipBoundaryRadius > Camera.main.orthographicSize) {
+			pos.y = Camera.main.orthographicSize - shipBoundaryRadius;
+		}
+		if(pos.y-shipBoundaryRadius < -Camera.main.orthographicSize) {
+			pos.y = -Camera.main.orthographicSize + shipBoundaryRadius;
+		}
+
+		// Now calculate the orthographic width based on the screen ratio
+		float screenRatio = (float)Screen.width / (float)Screen.height;
+		float widthOrtho = Camera.main.orthographicSize * screenRatio;
+
+		// Now do horizontal bounds
+		if(pos.x+shipBoundaryRadius > widthOrtho) {
+			pos.x = widthOrtho - shipBoundaryRadius;
+		}
+		if(pos.x-shipBoundaryRadius < -widthOrtho) {
+			pos.x = -widthOrtho + shipBoundaryRadius;
+		}
+
+		// Finally, update our position!!
+		transform.position = pos;
+
+
+	}
 }

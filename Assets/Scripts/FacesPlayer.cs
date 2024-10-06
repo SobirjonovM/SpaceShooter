@@ -1,29 +1,30 @@
-//using UnityEngine;
-//using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 
-//public class FacesPlayer : MonoBehaviour {
-    
-//    public float rotSpeed = 90f;
-//    Transform player;
+public class FacesPlayer : MonoBehaviour {
 
-//    void Update () {
-//        if(player == null) {
-//            GameObject.Find ("PlayerShip");
+	public float rotSpeed = 90f;
 
-//            if(global != null) {
-//                player = global.transfrom;
-//            }
-//        }
+	Transform player;
+	void Update () {
+		if(player == null) {
+			GameObject go = GameObject.Find ("PlayerShipSprite");
 
-//        if(player == null)
-//            return;
+			if(go != null) {
+				player = go.transform;
+			}
+		}
 
-//            Vector3 dir = player.position - transform.position;
-//            dir.Normalize();
+		if(player == null)
+			return;
+		Vector3 dir = player.position - transform.position;
+		dir.Normalize();
 
-//            float zAngle = Math.Atan2(dir.y, dir.x) * Mathf. Rad2Deg - 90;
-//            Quanternion desiredRot = Quaternion.Euler(0, 0, zAngle);
-//            transfrom.rotation = Quaternion.RotateTowards( transform.rotation, desiredRot, rotSpeed * Time.deltaTime);
-//    }
-//}
+		float zAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 
+		Quaternion desiredRot = Quaternion.Euler( 0, 0,zAngle );
+
+		transform.rotation = Quaternion.RotateTowards( transform.rotation, desiredRot, rotSpeed * Time.deltaTime);
+
+	}
+}
