@@ -7,24 +7,45 @@ public class DamageHandler : MonoBehaviour {
     public float invulnPeriod = 0;
     float invulnTimer = 0;
     int correctLayer;
-    
+
+    SpriteRenderer spriteRend;
     void Start() {
         correctLayer = gameObject.layer;
 
+        spriteRend = GetComponent<SpriteRenderer>();
+
+        if (spriteRend == null)
+        {
+            spriteRend = transform.GetComponentInChildren<SpriteRenderer>();
+            if (spriteRend == null) {
+                Debug.LogError("Object ' " + gameObject.name + "' has no sprite renderer ");
+            }
+            
+                }
+
     }
     void OnTriggerEnter2D () {
-        Debug.Log ("Trigger!");
-
             health--;
             invulnTimer = 0.50f;
             gameObject.layer = 10;  
     }
-    void Update(){
+    void Update() {
         invulnTimer -= Time.deltaTime;
-        if(invulnTimer <= 0){
+        if (invulnTimer <= 0)
+        {
             gameObject.layer = correctLayer;
+            if (spriteRend != null)
+            {
+                spriteRend.enabled = true;
+            }
         }
-        if(health <= 0) {
+        else{
+            if (spriteRend!=null){
+                spriteRend.enabled = !(spriteRend.enabled);
+            }
+        }
+    
+        if (health <= 0) {
             Die();
         }
     }

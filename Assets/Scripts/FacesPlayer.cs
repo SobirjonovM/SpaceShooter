@@ -8,7 +8,7 @@ public class FacesPlayer : MonoBehaviour {
 	Transform player;
 	void Update () {
 		if(player == null) {
-			GameObject go = GameObject.Find ("PlayerShipSprite");
+			GameObject go = GameObject.FindWithTag ("Player");
 
 			if(go != null) {
 				player = go.transform;
@@ -16,7 +16,7 @@ public class FacesPlayer : MonoBehaviour {
 		}
 
 		if(player == null)
-			return;
+			return; 
 		Vector3 dir = player.position - transform.position;
 		dir.Normalize();
 
