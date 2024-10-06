@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
    public float maxSpeed = 5f;
    public float rotSpeed = 180f;
+
+   float shipBoudaryRadius = 0.5f;
     void Start (){
 
     }
@@ -24,6 +26,22 @@ public class PlayerMovement : MonoBehaviour {
 
        pos += rot * velocity;
        
+        if(pos.y+shipBoudaryRadius > Camera.main.orthographicSize) {
+            pos.y = Camera.main.orthographicSize - shipBoudaryRadius;
+        }
+        if(pos.y-shipBoudaryRadius < -Camera.main.orthographicSize) {
+            pos.y = -Camera.main.orthographicSize + shipBoudaryRadius;
+        }
+        float screenRatio = (float)Screen.width / (float)Screen.height;
+        float widthOrtho = Camera.main.orthographicSize * screenRatio;
+
+        if(pos.x+shipBoudaryRadius > widthOrtho) {
+            pos.x = widthOrtho - shipBoudaryRadius;
+        }
+        if(pos.x-shipBoudaryRadius < -widthOrtho) {
+            pos.x = -widthOrtho + shipBoudaryRadius;
+        }
+
         transform.position = pos;
     }
 }
