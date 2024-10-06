@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 58649082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.401196, y: 2.32, z: 0}
+  m_LocalPosition: {x: 0.18, y: 2.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,7 +219,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 58649082}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -445,8 +445,10 @@ GameObject:
   - component: {fileID: 730577707}
   - component: {fileID: 730577706}
   - component: {fileID: 730577705}
+  - component: {fileID: 730577710}
+  - component: {fileID: 730577711}
   m_Layer: 8
-  m_Name: sheet_1
+  m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,6 +607,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730577710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730577704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adb2075c6a904707aca0526e7dd357e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+--- !u!114 &730577711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730577704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5ca53105fd342eebc557cdb9acc5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 3
 --- !u!1 &1387900273
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +648,7 @@ GameObject:
   - component: {fileID: 1387900277}
   - component: {fileID: 1387900280}
   - component: {fileID: 1387900279}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: PlayerShipSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,6 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff2adf23ce543e29a11e2a2e6830df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletOffset: {x: 0, y: 0.5, z: 0}
+  bulletPrefab: {fileID: 4879449570120162766, guid: b50c12f17fab8459da5bb6457a5dca69, type: 3}
   fireDelay: 0.25
 --- !u!114 &1387900280
 MonoBehaviour:
@@ -888,7 +918,7 @@ Transform:
   m_GameObject: {fileID: 1992433857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: -1.94, z: 0}
+  m_LocalPosition: {x: 0.21, y: 3.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
