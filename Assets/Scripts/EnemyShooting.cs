@@ -9,10 +9,19 @@ public class EnemyShooting : MonoBehaviour {
 
     public float fireDelay = 0.50f;
     float cooldownTimer = 0;
+    Transform player;
     void Start(){
         bulletLayer = gameObject.layer;
     }
     void Update(){
+
+        if(player == null) {
+            GameObject go = GameObject.FindWithTag("Player");
+            if (go != null)
+            {
+                player = go.transform;
+            }
+        }
         cooldownTimer -= Time.deltaTime;
         if(cooldownTimer <=0 ){
             cooldownTimer = fireDelay;

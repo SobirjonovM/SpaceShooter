@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 8068321360859955784}
   - component: {fileID: 1948726139663275168}
   - component: {fileID: 5444020258684900335}
+  - component: {fileID: 8099309972105214665}
+  - component: {fileID: -6380102208659330143}
+  - component: {fileID: -3646587368784164818}
   m_Layer: 9
   m_Name: EnemyShip_1 (1)
   m_TagString: Untagged
@@ -173,3 +176,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   invulnPeriod: 0
+--- !u!114 &8099309972105214665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803666881044687388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c91e8148d4ae4df59f6fe8016890932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 120
+--- !u!114 &-6380102208659330143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803666881044687388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adb2075c6a904707aca0526e7dd357e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3
+--- !u!114 &-3646587368784164818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803666881044687388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530a427c29f134378bd2e1adcc57b5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletOffset: {x: 0, y: 0.5, z: 0}
+  bulletPrefab: {fileID: 4879449570120162766, guid: b50c12f17fab8459da5bb6457a5dca69, type: 3}
+  fireDelay: 0.5

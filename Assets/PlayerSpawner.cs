@@ -43,7 +43,7 @@ public class PlayerSpawner : MonoBehaviour
         }
         else
         {
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), "Game Over:" + numLives);
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), "Game Over:");
         }
     }
 
